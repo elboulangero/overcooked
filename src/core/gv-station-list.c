@@ -372,8 +372,8 @@ g_string_append_markup_tag_escaped(GString *string, const gchar *tag, const gcha
 {
 	gchar *escaped;
 
-	escaped = g_markup_escape_text(value, -1);
-	g_string_append_printf(string, "    <%s>%s</%s>\n", tag, value, tag);
+	escaped = g_markup_printf_escaped("    <%s>%s</%s>\n", tag, value, tag);
+	g_string_append(string, escaped);
 	g_free(escaped);
 
 	return string;
